@@ -1,6 +1,10 @@
-﻿namespace Gameplay.Cameras.Mechanics.Data
+﻿using Gameplay.Character;
+using Gameplay.InputSystems;
+using Infrastructure;
+
+namespace Gameplay.Cameras.Mechanics
 {
-	public abstract class BaseCameraMechanic : ICameraMechanic
+	public abstract class BaseCameraMechanic : MonoConstruct, ICameraMechanic
 	{
 		private bool _enabled;
 
@@ -27,9 +31,14 @@
 			_enabled = false;
 			DoDisable();
 		}
+		
+		public abstract void Construct(
+			IInputService inputService,
+			ActorSelectorService actorSelectorService
+		);
 
-		protected abstract void DoEnable();
 		protected abstract void DoUpdate(float deltaTime);
+		protected abstract void DoEnable();
 
 		protected virtual void DoDisable()
 		{

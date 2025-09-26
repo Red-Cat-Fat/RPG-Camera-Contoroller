@@ -1,43 +1,29 @@
-﻿using Gameplay.Cameras.Mechanics.Data;
-using Gameplay.Character;
+﻿using Gameplay.Character;
 using Gameplay.InputSystems;
 using UnityEngine;
 
-namespace Gameplay.Cameras.Mechanics.Logic
+namespace Gameplay.Cameras.Mechanics
 {
 	public class MoveCameraMechanic
 		: BaseCameraMechanic
 	{
-		private readonly IInputService _inputService;
-		private readonly RigCamera _rigCamera;
-		private readonly ActorSelectorService _actorSelector;
-		private readonly float _moveSpeed;
-		private readonly float _maxActiveCharacterDistance;
-		private readonly AnimationCurve _speedCurveFromDistance;
-		private readonly float _idleCooldown;
+		[SerializeField] private RigCamera _rigCamera;
+		[SerializeField] private float _moveSpeed = 3f;
+		[SerializeField] private float _maxActiveCharacterDistance = 9f;
+		[SerializeField] private AnimationCurve _speedCurveFromDistance;
+		[SerializeField] private float _idleCooldown = 5f;
 
-
+		private IInputService _inputService;
+		private ActorSelectorService _actorSelector;
 		private float _idleTimer;
-		private bool _isMoveToActiveCharacter = false;
+		private bool _isMoveToActiveCharacter;
 		private Actor _activeCharacter;
 
-		public MoveCameraMechanic(
-			IInputService inputService,
-			RigCamera rigCamera,
-			ActorSelectorService actorSelector,
-			float moveSpeed,
-			float maxActiveCharacterDistance,
-			AnimationCurve speedCurveFromDistance,
-			float idleCooldown
-		)
+
+		public override void Construct(IInputService inputService, ActorSelectorService actorSelectorService)
 		{
 			_inputService = inputService;
-			_rigCamera = rigCamera;
-			_actorSelector = actorSelector;
-			_moveSpeed = moveSpeed;
-			_maxActiveCharacterDistance = maxActiveCharacterDistance;
-			_speedCurveFromDistance = speedCurveFromDistance;
-			_idleCooldown = idleCooldown;
+			_actorSelector = actorSelectorService;
 			_activeCharacter = _actorSelector.GetActiveCharacter();
 		}
 
