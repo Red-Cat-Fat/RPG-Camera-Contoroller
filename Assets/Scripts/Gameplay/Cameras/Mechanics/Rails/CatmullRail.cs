@@ -95,7 +95,7 @@ namespace Gameplay.Cameras.Mechanics.Rails
 				var pos = GetPathPoint(progress, out var rotation);
 				Gizmos.DrawLine(prevPos, pos);
 				Gizmos.color = Color.Lerp(colorFrom, colorTo, progress);
-				Gizmos.DrawRay(pos, rotation * Vector3.forward * _debugDirectionLenght);
+				//Gizmos.DrawRay(pos, rotation * Vector3.forward * _debugDirectionLenght);
 				
 				prevPos = pos;
 			}

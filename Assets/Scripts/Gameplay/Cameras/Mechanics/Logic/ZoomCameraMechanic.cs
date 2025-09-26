@@ -1,4 +1,5 @@
 ﻿using Gameplay.Cameras.Mechanics.Data;
+using Gameplay.Cameras.Mechanics.Rails;
 using Gameplay.InputSystems;
 using UnityEngine;
 
@@ -8,60 +9,55 @@ namespace Gameplay.Cameras.Mechanics.Logic
 		: BaseCameraMechanic
 	{
 		private readonly IInputService _inputService;
-		private readonly RigCamera _rigCamera;
-		private readonly Transform _slider;
+		private readonly Transform _zoomPoint;
+		private readonly CatmullRail _rail;
 		private readonly float _zoomSpeed;
-		private readonly float _minDistance;
-		private readonly float _maxDistance;
+		private readonly float _zoomSmoothness;
 
-		private float _currentDistance = 10f;
+		private float _currentProgress = 10f;
 
 		public ZoomCameraMechanic(
 			IInputService inputService,
-			RigCamera rigCamera,
-			Transform slider,
+			Transform zoomPoint,
+			CatmullRail rail,
 			float zoomSpeed,
-			float minDistance,
-			float maxDistance
+			float zoomSmoothness
 		)
 		{
 			_inputService = inputService;
-			_rigCamera = rigCamera;
-			_slider = slider;
+			_zoomPoint = zoomPoint;
+			_rail = rail;
 			_zoomSpeed = zoomSpeed;
-			_minDistance = minDistance;
-			_maxDistance = maxDistance;
+			_zoomSmoothness = zoomSmoothness;
 		}
 
 		protected override void DoEnable()
 		{
-			_currentDistance = Vector3.Distance(
-				_rigCamera.CameraLink.transform.position,
-				_rigCamera.transform.position
-			);
+			_currentProgress = 0;
 		}
 
 		protected override void DoUpdate(float deltaTime)
 		{
 			var zoomInput = _inputService.ZoomValue;
-			if (zoomInput == 0)
-				return;
 
-			_currentDistance = Mathf.Clamp(
-				_currentDistance - zoomInput * _zoomSpeed,
-				_minDistance,
-				_maxDistance
+			_currentProgress = Mathf.Clamp01(
+				_currentProgress + zoomInput * _zoomSpeed
 			);
 
-			_slider.localPosition =
-				Vector3.Lerp(
-					_slider.localPosition,
-					new Vector3(
-						_slider.localPosition.x,
-						_slider.localPosition.y,
-						_currentDistance
-					),
-					deltaTime
+			var newCameraPosition
+				= _rail.GetPathPoint(_currentProgress, out var cameraRotation);
+
+			_zoomPoint.position = Vector3.Lerp(
+				_zoomPoint.position,
+				newCameraPosition,
+				deltaTime * _zoomSmoothness
+			);
+
+			_zoomPoint.rotation
+				= Quaternion.Lerp(
+					_zoomPoint.rotation,
+					cameraRotation,
+					deltaTime * _zoomSmoothness
 				);
 		}
 	}

@@ -79,14 +79,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190748580052767095}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.40675464, y: -0, z: -0, w: 0.91353744}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.064748414, y: -0.00000002980233, z: 0.000000026077037, w: 0.9979016}
+  m_LocalPosition: {x: -0, y: -0.14, z: -4.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7207106453555064598}
+  - {fileID: 7028145970723198270}
   m_Father: {fileID: 3970117037552045381}
-  m_LocalEulerAnglesHint: {x: -48.002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -7.425, y: 0, z: 0}
 --- !u!1 &4673048808674811564
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,8 +207,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5657861537344897405}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0012693622, y: -0, z: -0.0000000047730286, w: 0.9999992}
-  m_LocalPosition: {x: 0, y: -2.09, z: -1.9}
+  m_LocalRotation: {x: -0.0012693555, y: -0, z: -0.000000004714821, w: 0.9999992}
+  m_LocalPosition: {x: -0.00000166893, y: -1.1486646, z: -1.9053152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -245,38 +245,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2727074905397011970}
   m_LocalEulerAnglesHint: {x: 59.409, y: 0, z: 0}
---- !u!1 &6731146868717772698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7207106453555064598}
-  m_Layer: 0
-  m_Name: ZoomSlider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7207106453555064598
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6731146868717772698}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7028145970723198270}
-  m_Father: {fileID: 6001581771542214619}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7079138348516201395
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,13 +271,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7079138348516201395}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7028145970723198270}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5141101154140927441
 Camera:
   m_ObjectHideFlags: 0
@@ -394,12 +362,12 @@ Transform:
   m_GameObject: {fileID: 7303261018195983629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2456296206780037294}
-  m_Father: {fileID: 7207106453555064598}
+  m_Father: {fileID: 6001581771542214619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7321505132899730847
 GameObject:
@@ -493,10 +461,9 @@ MonoBehaviour:
     - rid: 5456678892751552921
       type: {class: ZoomCameraMechanicData, ns: Gameplay.Cameras.Mechanics.Data, asm: Assembly-CSharp}
       data:
-        _slider: {fileID: 7207106453555064598}
-        _zoomSpeed: 30
-        _minDistance: 2
-        _maxDistance: 10
+        _rail: {fileID: 5173171654038798190}
+        _zoomPoint: {fileID: 6001581771542214619}
+        _zoomSpeed: 0.5
         _zoomSmoothness: 5
 --- !u!114 &3582070411641596915
 MonoBehaviour:
