@@ -1,25 +1,36 @@
-﻿using UnityEngine;
+﻿using Gameplay.InputSystems;
+using Infrastructure;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Gameplay.Character
 {
 	[RequireComponent(typeof(NavMeshAgent))]
-	public class CharacterMovement : MonoBehaviour
+	public class CharacterMovement : MonoConstruct
 	{
-		[SerializeField] private Camera _mainCamera;
-
+		[SerializeField]
 		private NavMeshAgent _agent;
+		private IInputService _inputService;
 
-		private void Update()
+		public void Construct(IInputService inputService)
 		{
-			if (!Input.GetMouseButtonDown(0))
-				return;
+			_inputService = inputService;
+			FinishedInitialization();
+		}
 
-			var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out var hit))
-			{
-				_agent.SetDestination(hit.point);
-			}
+		private void OnMovePositionGet(Vector3 moveToPosition)
+		{
+			_agent.SetDestination(moveToPosition);
+		}
+
+		protected override void DoInitialized()
+		{
+			_inputService.MoveCharacterEvent += OnMovePositionGet;
+		}
+
+		protected override void DoDeinitialized()
+		{
+			_inputService.MoveCharacterEvent -= OnMovePositionGet;
 		}
 
 #if UNITY_EDITOR
