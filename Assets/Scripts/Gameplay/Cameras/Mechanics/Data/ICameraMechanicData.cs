@@ -1,9 +1,14 @@
-﻿using Gameplay.InputSystems;
+﻿using Gameplay.Character;
+using Gameplay.InputSystems;
 
 namespace Gameplay.Cameras.Mechanics.Data
 {
 	public interface ICameraMechanicData
 	{
-		public ICameraMechanic MakeMechanic(IInputService inputService, RigCamera rigCamera);
+		public ICameraMechanic MakeMechanic(
+			IInputService inputService,
+			RigCamera rigCamera,
+			ActorSelectorService actorSelector
+		);
 	}
 }

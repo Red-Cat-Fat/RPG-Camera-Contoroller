@@ -18,12 +18,15 @@ namespace Infrastructure
 			var player = Instantiate(CharacterPrefab, SpawnPlayerPoint.position, Quaternion.identity);
 			var cameraRig = Instantiate(CameraRigPrefab, SpawnPlayerPoint.position, Quaternion.identity);
 
-			var character = player.GetComponent<CharacterMovement>();
+			var character = player.GetComponent<Actor>();
 			var rig = cameraRig.GetComponent<RigCamera>();
 
+			var actorSelector = new ActorSelectorService();
+			actorSelector.AddCharacter(character);
 			var input = new UnityEditorInputService(_frameUpdater, rig.CameraLink);
+
 			character.Construct(input);
-			rig.Construct(input);
+			rig.Construct(input, actorSelector);
 		}
 
 #if UNITY_EDITOR

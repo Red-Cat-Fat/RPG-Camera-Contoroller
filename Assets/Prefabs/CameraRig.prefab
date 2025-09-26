@@ -450,6 +450,7 @@ MonoBehaviour:
   _cameraMechanicsData:
   - rid: 5456678892751552920
   - rid: 5456678892751552921
+  - rid: 5456678892751553045
   references:
     version: 2
     RefIds:
@@ -465,6 +466,54 @@ MonoBehaviour:
         _zoomPoint: {fileID: 6001581771542214619}
         _zoomSpeed: 0.5
         _zoomSmoothness: 5
+    - rid: 5456678892751553045
+      type: {class: MoveCameraMechanicData, ns: Gameplay.Cameras.Mechanics.Data, asm: Assembly-CSharp}
+      data:
+        _moveSpeed: 5
+        _idleTimer: 10
+        _maxActiveCharacterDistance: 30
+        _speedCurveFromDistance:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: -0.11589876
+            outSlope: -0.11589876
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.13168804
+          - serializedVersion: 3
+            time: 0.59241045
+            value: 0.92454004
+            inSlope: -0.21630411
+            outSlope: -0.21630411
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.2278333
+          - serializedVersion: 3
+            time: 0.9276525
+            value: 0.490117
+            inSlope: -3.2478368
+            outSlope: -3.2478368
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -13.979824
+            outSlope: -13.979824
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.012738943
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!114 &3582070411641596915
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using Extensions;
 using Gameplay.Cameras.Mechanics;
 using Gameplay.Cameras.Mechanics.Data;
+using Gameplay.Character;
 using Gameplay.InputSystems;
 using Infrastructure;
 using SerializeReferenceEditor;
@@ -19,11 +20,11 @@ namespace Gameplay.Cameras
 
 		public Camera CameraLink => _camera;
 
-		public void Construct(IInputService inputService)
+		public void Construct(IInputService inputService, ActorSelectorService actorSelectorService)
 		{
 			_cameraMechanics = new ICameraMechanic[_cameraMechanicsData.Length];
 			for (var i = 0; i < _cameraMechanicsData.Length; i++)
-				_cameraMechanics[i] = _cameraMechanicsData[i].MakeMechanic(inputService, this);
+				_cameraMechanics[i] = _cameraMechanicsData[i].MakeMechanic(inputService, this, actorSelectorService);
 
 			FinishedInitialization();
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using Gameplay.Cameras.Mechanics.Logic;
 using Gameplay.Cameras.Mechanics.Rails;
+using Gameplay.Character;
 using Gameplay.InputSystems;
 using SerializeReferenceEditor;
 using UnityEngine;
@@ -16,7 +17,11 @@ namespace Gameplay.Cameras.Mechanics.Data
 		[SerializeField] private float _zoomSpeed = 5f;
 		[SerializeField] private float _zoomSmoothness = 5f;
 
-		public ICameraMechanic MakeMechanic(IInputService inputService, RigCamera rigCamera)
+		public ICameraMechanic MakeMechanic(
+			IInputService inputService,
+			RigCamera rigCamera,
+			ActorSelectorService actorSelector
+		)
 			=> new ZoomCameraMechanic(
 				inputService,
 				_zoomPoint,

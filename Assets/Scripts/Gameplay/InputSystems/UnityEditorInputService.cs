@@ -10,7 +10,7 @@ namespace Gameplay.InputSystems
 		private readonly Camera _renderCamera;
 
 		public event Action<Vector3> MoveCharacterEvent;
-		public Vector3 MoveCameraDirection { get; private set; }
+		public Vector2 MoveCameraDirection { get; private set; }
 		public float ZoomValue { get; private set; }
 		public int RotateValue { get; private set; }
 		public bool LookAtCharacter { get; private set; }
