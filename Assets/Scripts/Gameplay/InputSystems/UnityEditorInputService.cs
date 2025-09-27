@@ -72,13 +72,13 @@ namespace Gameplay.InputSystems
 
 		private void CheckMoveInput()
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (!Input.GetMouseButtonDown(0))
+				return;
+
+			var ray = _renderCamera.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out var hit))
 			{
-				var ray = _renderCamera.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out var hit))
-				{
-					MoveCharacterEvent?.Invoke(hit.point);
-				}
+				MoveCharacterEvent?.Invoke(hit.point);
 			}
 		}
 	}

@@ -88,7 +88,9 @@ namespace Gameplay.Cameras.Mechanics
 			var colorTo = Color.red;
 			Gizmos.color = colorFrom;
 
-			var prevPos = GetPathPoint(0f, out _);
+			var prevPos = GetPathPoint(0f, out var firstRotation);
+			Gizmos.DrawRay(prevPos, firstRotation * Vector3.forward * _debugDirectionLenght);
+
 			for (var i = 1; i <= _debugSamples; i++)
 			{
 				var progress = i / (float)_debugSamples;

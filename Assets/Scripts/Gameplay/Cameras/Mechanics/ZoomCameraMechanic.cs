@@ -12,7 +12,7 @@ namespace Gameplay.Cameras.Mechanics
 		[SerializeField] private CatmullRail _rail;
 		[SerializeField] private float _zoomSpeed = 5f;
 		[SerializeField] private float _zoomSmoothness = 5f;
-
+		[SerializeField] private float _zoomOnStart = 0.5f;
 		private float _currentProgress = 10f;
 
 		public override void Construct(IInputService inputService, ActorSelectorService actorSelectorService)
@@ -22,7 +22,7 @@ namespace Gameplay.Cameras.Mechanics
 
 		protected override void DoEnable()
 		{
-			_currentProgress = 0;
+			_currentProgress = _zoomOnStart;
 		}
 
 		protected override void DoUpdate(float deltaTime)

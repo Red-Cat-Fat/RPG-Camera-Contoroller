@@ -20,6 +20,9 @@ namespace Gameplay.Character
 		{
 			if (_agent == null)
 				_agent = GetComponent<NavMeshAgent>();
+			
+			if (_agent == null)
+				Debug.LogErrorFormat("No NavMeshAgent found on {0}", gameObject.name);
 		}
 #endif
 	}

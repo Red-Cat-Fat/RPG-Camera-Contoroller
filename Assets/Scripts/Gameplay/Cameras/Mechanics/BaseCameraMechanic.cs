@@ -4,7 +4,7 @@ using Infrastructure;
 
 namespace Gameplay.Cameras.Mechanics
 {
-	public abstract class BaseCameraMechanic : MonoConstruct, ICameraMechanic
+	public abstract class BaseCameraMechanic : MonoConstruct
 	{
 		private bool _enabled;
 

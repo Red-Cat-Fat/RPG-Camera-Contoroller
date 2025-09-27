@@ -9,6 +9,7 @@ namespace Gameplay.Character
 		[SerializeField] private ActorMovement _movement;
 		
 		private IInputService _inputService;
+		public bool IsMove => _movement != null && _movement.MoveDirection.sqrMagnitude > 0;
 
 		public void Construct(IInputService inputService)
 		{
